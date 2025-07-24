@@ -48,7 +48,7 @@
             <a th:if="${loggedinuser}" data-th-href="@{'/user/contacts/add'}" class="px-6  py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
                 Add Contacts
             </a>
-            <a th:unless="${loggedinuser}" data-th-href="@{'/signup'}" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
+            <a th:unless="${loggedinuser}" data-th-href="@{'/signin'}" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
                Register
             </a>
             <a href="/learn-more" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
