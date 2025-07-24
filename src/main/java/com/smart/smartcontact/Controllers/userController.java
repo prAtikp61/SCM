@@ -22,7 +22,7 @@ public class userController {
     //user dashboard page
     @RequestMapping(value = "/dashboard",method = RequestMethod.GET)
     public String dashboard() {
-        return "userFolder/dashboard";
+        return "userFolder/home";
     }
 
     //user profile page
