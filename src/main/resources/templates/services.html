@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Our Services - Smart Contact Manager</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" th:href="@{/CSS/style.css}" />
+    <link rel="stylesheet" th:href="@{/CSS/output.css}" />
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="dark:bg-gray-800 bg-gray-100">
+
+<!-- Navbar and Sidebar -->
+<div th:if="${loggedinuser}">
+    <div data-th-replace="userFolder/user_navbar::user_nav"></div>
+    <div data-th-replace="userFolder/sidebar::sidebar"></div>
+</div>
+<div th:unless="${loggedinuser}">
+    <div data-th-replace="navbar :: navbar"></div>
+</div>
+
+<!-- Services Section -->
+<section class="max-w-7xl mx-auto px-15  py-28 pt-5 pl-14
+">
+    <h1 class="text-4xl font-bold text-center pt-24 pb-5 text-gray-800  dark:text-white">Our Services</h1>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-2 ">
+        <!-- Service 1 -->
+        <div class="p-6 flex justify-between flex-col bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-indigo-600 dark:text-indigo-400 text-3xl mb-4"><i class="fas fa-user-plus"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Add & Manage Contacts</h2>
+            <p class="text-gray-600  dark:text-gray-300">Easily add and manage contacts with full name, email, phone number, and custom details.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-green-600 dark:text-green-400 text-3xl mb-4"><i class="fas fa-cloud-upload-alt"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Export Contacts</h2>
+            <p class="text-gray-600 dark:text-gray-300">Download your contacts as CSV or PDF with one click for backup or sharing.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-yellow-600 dark:text-yellow-400 text-3xl mb-4"><i class="fas fa-image"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Store Profile Images</h2>
+            <p class="text-gray-600 dark:text-gray-300">Upload and associate profile pictures with each contact for better identification.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-pink-600 dark:text-pink-400 text-3xl mb-4"><i class="fas fa-link"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Save Useful Links</h2>
+            <p class="text-gray-600 dark:text-gray-300">Attach important links (socials, websites, portfolios) to each contact securely.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-blue-600 dark:text-blue-400 text-3xl mb-4"><i class="fas fa-envelope"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Gmail Integration</h2>
+            <p class="text-gray-600 dark:text-gray-300">Login with Gmail and manage your contact list seamlessly and securely.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div class="p-6 bg-white dark:bg-gray-900 rounded-lg shadow hover:shadow-lg transition">
+            <div class="text-red-600 dark:text-red-400 text-3xl mb-4"><i class="fas fa-mobile-alt"></i></div>
+            <h2 class="text-xl font-semibold text-gray-800 dark:text-white mb-2">Mobile-Friendly Design</h2>
+            <p class="text-gray-600 dark:text-gray-300">Our smart contact manager is fully responsive and works great on all devices.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+<script data-th-src="@{/js/script.js}"></script>
+</body>
+</html>

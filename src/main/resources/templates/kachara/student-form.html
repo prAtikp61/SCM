@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+
+    <title>HTML 5 Boilerplate</title>
+</head>
+
+<body>
+<h1>STUDENT REGISTRATION FORM</h1>
+
+<form  th:action="@{/studentprocess}" th:object="${student}" method="POST">
+    <input type="text" name="broo" placeholder="enter your pahila name" th:field="*{firstName}" >
+    <br></br>
+
+    <input type="text" th:field="*{lastName}" name="lastbro" placeholder="enter your shevat ka name">
+    <br></br>
+
+    <!-- HARDCORE DROPDOWN -->
+    COUNTRY
+    <select th:field="*{country}">
+        <option value="default"/>
+        <option th:value="Brazil">BRAZIL</option>
+        <option th:value="India">INDIA</option>
+        <option th:value="Usa">USA</option>
+        <option th:value="Pak">PAK</option>
+    </select>
+
+    <!-- EASY DROPDOWN  BY @Value-->
+    COUNTRY
+    <select th:field="*{country}">
+        <option th:each="tempcountry : ${countries}"
+                th:value="${tempcountry}"
+                th:text="${tempcountry}"/>
+    </select>
+
+    <!-- HARDCORE RADIO -->
+    <label>Select Language:</label>
+    <div>
+        <input type="radio" id="langC" th:field="*{lang}" th:value="'C'">
+        <label for="langC">C</label>
+    </div>
+    <div>
+        <input type="radio" id="langCpp" th:field="*{lang}" th:value="'C++'">
+        <label for="langCpp">C++</label>
+    </div>
+    <div>
+        <input type="radio" id="langJava" th:field="*{lang}" th:value="'JAVA'">
+        <label for="langJava">Java</label>
+    </div>
+    <div>
+        <input type="radio" id="langPython" th:field="*{lang}" th:value="'PYTHON'">
+        <label for="langPython">Python</label>
+    </div>
+    <br>
+
+    <!-- EASY RADIO BY @Value -->
+    <input type="radio" th:field="*{lang}"
+                        th:each="templang : ${languages}"
+                        th:value="${templang}" th:text="${templang}">
+
+    <input type="submit" value="submit">
+</form>
+</body>
+</html>

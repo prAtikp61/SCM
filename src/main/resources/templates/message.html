@@ -1,0 +1,9 @@
+<div
+        data-th-if="${session.message}"
+        data-th-object="${session.message}"
+        data-th-fragment="messagebox"
+        data-th-class="*{'text-'+type+'-800 bg-'+type+'-50 dark:bg-gray-800 dark:text-'+type+'-400'}"
+        class="p-4 mb-4 text-sm rounded-lg " role="alert">
+    <span data-th-text="*{msg1}"></span>
+    <th:block th:text="${@messageRemover.remove()}"></th:block>
+</div>

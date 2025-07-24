@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::#content},~{::script})}">
+<head>
+    <title>Profile Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="bg-gray-50 min-h-screen">
+<div id="content" class="pl-0 pt-16 md:pl-64 md:pt-20 transition-all duration-300">
+    <!-- sidebar -->
+    <!-- user is logged in: sidebar -->
+    <div class="flex flex-col items-center justify-center text-center px-4">
+<!--       user profile card-->
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-md p-6 dark:bg-gray-800 dark:text-white">
+            <!-- Profile Image -->
+            <div class="flex justify-center">
+                <img
+                        th:src="@{${loggedinuser.profilePic}}"
+                        onerror="this.src='https://cdn-icons-png.flaticon.com/128/4140/4140037.png'"
+                        alt="Profile Picture"
+                        class="w-24 h-24 rounded-full object-cover border-4 border-blue-500 shadow-md"
+                />
+            </div>
+
+            <!-- User Info -->
+            <div class="mt-4 text-center">
+                <h2 class="text-xl font-bold" data-th-text="${loggedinuser.name}">User Name</h2>
+                <p class="text-gray-500 dark:text-gray-300 text-sm" data-th-text="${loggedinuser.email}">user@example.com</p>
+                <p class="text-gray-500 dark:text-gray-300 text-sm mt-1" data-th-text="${loggedinuser.phoneNumber}">+91-9999999999</p>
+            </div>
+
+            <!-- About Section -->
+            <div class="mt-4 text-left">
+                <h3 class="font-semibold text-gray-700 dark:text-gray-200 mb-1">About</h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400" data-th-text="${loggedinuser.about}">
+                    Enthusiastic developer with a passion for coding and solving problems.
+                </p>
+            </div>
+
+            <!-- Action Buttons (Optional) -->
+            <div class="mt-6 flex justify-center gap-4">
+              
+                <a href="/logout"
+                   class="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2 rounded">
+                    Logout
+                </a>
+            </div>
+        </div>
+
+          </div>
+</div>
+
+<script>
+    console.log("this is profile page");
+</script>
+</body>
+</html>

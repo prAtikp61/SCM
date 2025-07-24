@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Welcome to about page</title>
+
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/CSS/style.css}"/>
+    <link rel="stylesheet" th:href="@{/CSS/output.css}"/>
+
+    <!-- Fix full height -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<!-- 👇 Important: This sets up full height layout -->
+<body class="flex flex-col min-h-screen dark:bg-gray-800 bg-gray-100 text-gray-900 dark:text-white">
+
+<!-- Navbar / Sidebar -->
+<div th:if="${loggedinuser}">
+    <div data-th-replace="userFolder/user_navbar::user_nav"></div>
+    <div data-th-replace="userFolder/sidebar::sidebar"></div>
+</div>
+<div th:unless="${loggedinuser}">
+    <div data-th-replace="navbar :: navbar"></div>
+</div>
+<div id="content" class="p-6 max-w-5xl mx-auto">
+    <section class="text-center mb-10">
+        <h1 class="text-4xl font-bold  ">About Smart Contact Management</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400">
+            Smart Contact Management is your intelligent assistant for managing personal and professional contacts. We help you stay connected, organized, and productive.
+        </p>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-3">Key Features</h2>
+        <ul class="list-disc list-inside text-gray-700 dark:text-gray-300 space-y-2">
+            <li><strong>Add, View, Edit, Delete Contacts</strong> with ease.</li>
+            <li>Store detailed contact info: <em>name, mobile number, email, address, image, and links</em>.</li>
+            <li><strong>Export Contacts</strong> in various formats (PDF/Excel/CSV).</li>
+            <li>Responsive and intuitive design with <strong>dark mode support</strong>.</li>
+            <li><strong>Secure Google Login</strong> and user session management.</li>
+        </ul>
+    </section>
+
+    <section class="mb-10">
+        <h2 class="text-2xl font-semibold mb-3">Why Choose Us?</h2>
+        <p class="text-gray-700 dark:text-gray-300">
+            We designed Smart Contact Management with security in mind. managing contacts has never been easy.
+        </p>
+    </section>
+
+    <section>
+        <h2 class="text-2xl font-semibold mb-3">Get Started</h2>
+        <p class="text-gray-700 dark:text-gray-300">
+            Ready to simplify your contact management? <a data-th-href="@{'/signin'}" class="text-blue-600 dark:text-blue-400 underline">Create an account</a> or <a data-th-href="@{'/register'}" class="text-blue-600 dark:text-blue-400 underline">log in</a> now.
+        </p>
+    </section>
+</div>
+
+<div id="script"></div>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+<script data-th-src="@{/js/script.js}"></script>
+</body>
+</html>

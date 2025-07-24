@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="dark" lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home | Welcome</title>
+
+    <!-- External CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" th:href="@{/CSS/style.css}"/>
+    <link rel="stylesheet" th:href="@{/CSS/output.css}"/>
+
+    <!-- Fix full height -->
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-white">
+
+<!-- Navbar -->
+<div th:if="${loggedinuser}">
+    <div th:replace="userFolder/user_navbar :: user_nav"></div>
+</div>
+<div th:unless="${loggedinuser}">
+    <div th:replace="navbar :: navbar"></div>
+</div>
+
+<!-- Sidebar (fixed on left) -->
+<div th:if="${loggedinuser}" class="fixed top-0 left-0 h-full w-64 z-40 bg-white dark:bg-gray-900 shadow">
+    <div th:replace="userFolder/sidebar :: sidebar"></div>
+</div>
+
+<!-- Main content -->
+<main class="flex-grow ml-64 p-4">
+    <!-- Hero Section -->
+    <section  class="text-center pt-24 ">
+
+        <h1 class="text-4xl font-bold mb-4">Welcome to Smart Contact Manager</h1>
+        <div class="flex justify-center mb-4 gap-4 flex-wrap">
+            <a th:if="${loggedinuser}" data-th-href="@{'/user/contacts/add'}" class="px-6  py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
+                Add Contacts
+            </a>
+            <a th:unless="${loggedinuser}" data-th-href="@{'/signup'}" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
+               Register
+            </a>
+            <a href="/learn-more" class="px-6 py-3 bg-indigo-700 text-white font-semibold rounded-lg shadow hover:bg-indigo-800 transition">
+                Learn More
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="flex flex-col items-center gap-5">
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow w-full max-w-xl text-center hover:shadow-lg transition">
+            <i class="fa-solid fa-bolt text-indigo-600 dark:text-indigo-400 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Fast & Reliable</h3>
+            <p class="text-gray-600 dark:text-gray-300">Experience lightning-fast performance and consistent uptime.</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow w-full max-w-xl text-center hover:shadow-lg transition">
+            <i class="fa-solid fa-shield-halved text-indigo-600 dark:text-indigo-400 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">Secure Platform</h3>
+            <p class="text-gray-600 dark:text-gray-300">Your data is protected with the highest level of encryption and privacy.</p>
+        </div>
+
+        <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow w-full max-w-xl text-center hover:shadow-lg transition">
+            <i class="fa-solid fa-users text-indigo-600 dark:text-indigo-400 text-4xl mb-4"></i>
+            <h3 class="text-xl font-semibold mb-2">User Friendly</h3>
+            <p class="text-gray-600 dark:text-gray-300">An intuitive interface designed for everyone, no tech knowledge required.</p>
+        </div>
+    </section>
+</main>
+
+
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+<script data-th-src="@{/js/script.js}"></script>
+</body>
+</html>
