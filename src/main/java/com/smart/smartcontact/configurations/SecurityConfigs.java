@@ -47,7 +47,7 @@ public class SecurityConfigs {
         http.formLogin(formLogin -> {
             formLogin.loginPage("/signin");
             formLogin.loginProcessingUrl("/authenticate");
-            formLogin.defaultSuccessUrl("/user/dashboard", true);
+            formLogin.defaultSuccessUrl("/user/profile", true);
             formLogin.usernameParameter("email");
             formLogin.passwordParameter("password");
         });
